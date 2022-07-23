@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'countryFlix';
+  darkTheme: boolean = true;
+
+  dark(event: boolean){
+    this.darkTheme = event;
+    console.log("darkTheme", this.darkTheme)
+  }
 }

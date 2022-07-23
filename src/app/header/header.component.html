@@ -1,8 +1,17 @@
 <header class="top">
-    <div class="pageTitle">
-        {{staticContent.pageTitle}}
-    </div>
-    <div class="theme-toggle">
-        <i class="far fa-moon"></i>Dark Mode
-    </div>
+  <div class="pageTitle">
+    {{ staticContent.pageTitle }}
+  </div>
+  
+  <div class="theme-toggle" (click)="toggleSwitch()">
+    <span *ngIf="!darkTheme">
+        <i class="far fa-moon"></i>
+        Dark Mode
+    </span>
+    <span *ngIf="darkTheme">
+        <i class="far fa-sun"></i> 
+        Light Mode
+    </span>
+  </div>
+  
 </header>

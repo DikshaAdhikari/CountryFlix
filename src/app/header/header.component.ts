@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { StaticContent } from '../common/model/static-comtent.model';
 
 @Component({
@@ -9,9 +9,17 @@ import { StaticContent } from '../common/model/static-comtent.model';
 })
 export class HeaderComponent implements OnInit {
   staticContent: StaticContent = new StaticContent();
+  darkTheme: boolean = true;
+  @Output() dark = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleSwitch(){
+    this.darkTheme = !this.darkTheme;
+    console.log("DARK", this.darkTheme)
+    this.dark.emit(this.darkTheme)
+  }
 }
+

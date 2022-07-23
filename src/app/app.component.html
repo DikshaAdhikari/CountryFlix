@@ -1,2 +1,4 @@
-<app-header></app-header>
-<app-landing-page></app-landing-page>
+<div class="mainBody" [attr.data-theme]="darkTheme ? 'dark' : 'light'">
+    <app-header (dark)="dark($event)"></app-header>
+    <app-landing-page></app-landing-page>
+</div>

@@ -14,7 +14,7 @@
     --transition: 300ms ease-in-out;
 }
 
-html{
+.mainBody[data-theme="light"]{
     --color-text-m: var(--color-dark-blue-08);
     --color-text-sp: var(--color-dark-gray);
     --bg-app: var(--color-light-gray);
@@ -23,7 +23,7 @@ html{
     --component-shadow: 0px 0px 10px #f1f1f1;
 }
 
-html[data-theme="dark"]{
+.mainBody[data-theme="dark"]{
     --color-text-m: var(--color-white);
     --color-text-s: var(--color-gray-61);
     --bg-app: var(--color-dark-blue-17);
@@ -33,12 +33,13 @@ html[data-theme="dark"]{
 }
 
 html,
-body {
+body,
+.mainBody {
     min-height: 100%;
-    height: auto;
+    height: 100%;
 }
 
-body {
+.mainBody {
     font-family: 'Nunito Sans', sans-serif;
     color: var(--color-text-m);
     background-color: var(--bg-app);
