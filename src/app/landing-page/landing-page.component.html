@@ -6,9 +6,9 @@
             <input type="text" placeholder="{{ staticContent.searchBar }}" >
             </form>
         </div>
-        <div class="region-list">
+        <div class="region-list" (click)="regionToggle()">
             {{ staticContent.filter }}<i class="fas fa-chevron-down arrow-down"></i>
-            <div class="regions">
+            <div class="regions" *ngIf="showRegions" (click)="regionSelect($event)">
                 <div>All</div>
                 <div>Africa</div>
                 <div>Americas</div>
@@ -19,5 +19,17 @@
         </div>
     </div>
 
-    <div class="countries"></div>
+    <div class="countries" *ngFor="let countryModel of countryList; let i=index">
+        <div class="country">
+            <div class="image">
+                 <img src={{countryModel.country.image}} alt="country-image">
+            </div>
+            <div class="content">
+                 <div class="name" (click)="regionSelect($event)">{{countryModel.country.name}}</div>
+                <div class="population">Population : <span>{{numberWithCommas(countryModel.country.population)}}</span></div>
+                <div class="region">Region : <span>{{countryModel.country.region}}</span></div>
+                <div class="capital">Capital : <span>{{countryModel.country.capital}}</span></div>
+            </div>
+        </div>
+    </div>
 </main>

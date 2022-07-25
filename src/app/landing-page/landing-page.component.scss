@@ -1,3 +1,78 @@
 main {
     padding: 2rem 4%;
 }
+
+.search{
+    position: relative;
+    width:35%;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: var(--component-shadow);
+    transition: box-shadow var(--transition);
+}
+
+.search input{
+    outline: none;
+    border: none;
+    padding: 0.8rem 1rem;
+    padding-left: 3rem;
+    width: 100%;
+    background-color: var(--bg-component);
+    color: var(--color-text-m);
+    transition: color var(--transition), background-color var(--transition);
+}
+
+.search input::placeholder{
+    color:var(--color-text-sp);
+    font: 12px 'Nunito Sans', sans-serif;
+}
+
+.search .fas{
+    position: absolute;
+    left:1rem;
+    top:0.8rem;
+    color: hsl(0, 7%, 81%);
+}
+
+.region-list{
+    box-shadow: var(--component-shadow);
+}
+
+.region-list, .regions{
+    background-color: var(--bg-component);
+    font-weight: 600;
+    font-size: 12px;
+    position: relative;
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    width: 180px;
+    transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+.regions{
+    position: absolute;
+    left: 0;
+    top:50px;
+    width: 100%;
+    transition: visibility 500ms linear 100ms, opacity 500ms, background-color var(--transition), box-shadow var(--transition);
+}
+
+.regions div:not(:last-child){
+    margin-bottom: 0.5rem;
+}
+
+.regions div:hover, .region-list:hover{
+    cursor: pointer;
+}
+
+.regions div:hover{
+    background-color: var(--color-text-m);
+    color: var(--bg-component);
+}
+
+.arrow-down{
+    position: absolute;
+    right: 1rem;
+    top:50%;
+    transform: translateY(-50%);
+}

@@ -3,3 +3,4 @@ export class StaticContent {
     searchBar = "Search for a country...";
     filter = "Filter by Region"
 }
+

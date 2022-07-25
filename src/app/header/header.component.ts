@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
-import { StaticContent } from '../common/model/static-comtent.model';
+import { StaticContent } from '../common/model/static-content.model';
 
 @Component({
   selector: 'app-header',
