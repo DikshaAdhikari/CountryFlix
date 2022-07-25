@@ -1,5 +1,9 @@
 <main class="container-body">
-    <div class="top">
+    <div class="error-msg" *ngIf="error">
+        <i class="fas fa-exclamation-triangle"></i>
+        {{ staticContent.serviceFailure }}
+    </div>
+    <div class="top" *ngIf="!error">
         <div class="search">
             <i class="fas fa-search"></i>
             <form>
@@ -19,8 +23,8 @@
         </div>
     </div>
 
-    <div class="countries" *ngFor="let countryModel of countryList; let i=index">
-        <div class="country">
+    <div class="countries" >
+        <div class="country" *ngFor="let countryModel of countryList; let i=index">
             <div class="image">
                  <img src={{countryModel.country.image}} alt="country-image">
             </div>

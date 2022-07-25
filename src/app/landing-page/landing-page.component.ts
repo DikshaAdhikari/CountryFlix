@@ -14,13 +14,20 @@ export class LandingPageComponent implements OnInit {
   staticContent: StaticContent = new StaticContent();
   // countryModel: CountryModel = new CountryModel();
   countryList: CountryModel[] = [];
+  error: boolean = false;
   constructor(public dataPassingService: DataPassingService) {}
 
   ngOnInit(): void {
-    this.dataPassingService.getAllData().subscribe((data) => {
-      console.log(data);
-      this.responseMapping(data);
-    });
+    this.dataPassingService.getAllData().subscribe(
+      (data) => {
+        console.log(data);
+        this.responseMapping(data);
+      },
+      (error) => {
+        console.log(error);
+        this.error = true;
+      }
+    );
     // console.log(this.dataPassingService.getCountryData('peru'))
   }
 
@@ -51,10 +58,6 @@ export class LandingPageComponent implements OnInit {
       this.countryList[i].country.region = data[i].region;
       this.countryList[i].country.capital = data[i].capital;
     }
-    // console.log(());
-    // (this.countryList.forEach(i=>{
-    //   console.log(i.country.name)
-    // }))
   }
 
   numberWithCommas(x: any) {

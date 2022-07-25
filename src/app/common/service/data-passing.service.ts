@@ -10,14 +10,12 @@ export class DataPassingService {
   constructor(private http:HttpClient) { }
 
   getAllData(){
-    let all = this.url + 'all';
+    this.endpoint = 'all'
+    let all = this.url + this.endpoint;
     return this.http.get(all);
   }
   getCountryData(country: string){
-    // debugger
     let countryURL = this.url + 'name/' + country;
-
-    // return (countryURL)
     return this.http.get(countryURL)
   }
      
