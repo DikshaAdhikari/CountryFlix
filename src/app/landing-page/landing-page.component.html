@@ -1,39 +1,48 @@
 <main class="container-body">
-    <div class="error-msg" *ngIf="error">
-        <i class="fas fa-exclamation-triangle"></i>
-        {{ staticContent.serviceFailure }}
+  <div class="error-msg" *ngIf="error">
+    <i class="fas fa-exclamation-triangle"></i>
+    {{ staticContent.serviceFailure }}
+  </div>
+  <div class="top" *ngIf="!error">
+    <div class="search">
+      <i class="fas fa-search"></i>
+      <form>
+        <input type="text" placeholder="{{ staticContent.searchBar }}" />
+      </form>
     </div>
-    <div class="top" *ngIf="!error">
-        <div class="search">
-            <i class="fas fa-search"></i>
-            <form>
-            <input type="text" placeholder="{{ staticContent.searchBar }}" >
-            </form>
-        </div>
-        <div class="region-list" (click)="regionToggle()">
-            {{ staticContent.filter }}<i class="fas fa-chevron-down arrow-down"></i>
-            <div class="regions" *ngIf="showRegions" (click)="regionSelect($event)">
-                <div>All</div>
-                <div>Africa</div>
-                <div>Americas</div>
-                <div>Asia</div>
-                <div>Europe</div>
-                <div>Oceania</div>
-            </div>
-        </div>
+    <div class="region-list" (click)="regionToggle()">
+      {{ (selectedRegion === '') ? staticContent.filter : selectedRegion }} <i class="fas fa-chevron-down arrow-down"></i>
+      <div class="regions" *ngIf="showRegions">
+        <ul *ngFor="let region of dataList.regionList; let i = index" (click)="regionSelect(dataList.regionList[i].label)">
+          <li>{{ region.label }}</li>
+        </ul>
+      </div>
     </div>
+  </div>
 
-    <div class="countries" >
-        <div class="country" *ngFor="let countryModel of countryList; let i=index">
-            <div class="image">
-                 <img src={{countryModel.country.image}} alt="country-image">
-            </div>
-            <div class="content">
-                 <div class="name" (click)="regionSelect($event)">{{countryModel.country.name}}</div>
-                <div class="population">Population : <span>{{numberWithCommas(countryModel.country.population)}}</span></div>
-                <div class="region">Region : <span>{{countryModel.country.region}}</span></div>
-                <div class="capital">Capital : <span>{{countryModel.country.capital}}</span></div>
-            </div>
+  <div class="countries">
+    <div
+      class="country"
+      *ngFor="let countryModel of countryList; let i = index"
+    >
+      <div class="image">
+        <img src="{{ countryModel.country.image }}" alt="country-image" />
+      </div>
+      <div class="content">
+        <div class="name">
+          {{ countryModel.country.name }}
         </div>
+        <div class="population">
+          Population :
+          <span>{{ numberWithCommas(countryModel.country.population) }}</span>
+        </div>
+        <div class="region">
+          Region : <span>{{ countryModel.country.region }}</span>
+        </div>
+        <div class="capital">
+          Capital : <span>{{ countryModel.country.capital }}</span>
+        </div>
+      </div>
     </div>
+  </div>
 </main>

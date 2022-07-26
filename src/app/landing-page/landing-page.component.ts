@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { StaticContent } from '../common/model/static-content.model';
+import { StaticContent, DataList } from '../common/model/static-content.model';
 import { CountryModel } from '../common/model/country-data.model';
 import { DataPassingService } from '../common/service/data-passing.service';
 
@@ -11,33 +11,37 @@ import { DataPassingService } from '../common/service/data-passing.service';
 })
 export class LandingPageComponent implements OnInit {
   showRegions: boolean = false;
+  selectedRegion: string = '';
+  dataList: DataList = new DataList();
   staticContent: StaticContent = new StaticContent();
-  // countryModel: CountryModel = new CountryModel();
   countryList: CountryModel[] = [];
+  newList;
   error: boolean = false;
   constructor(public dataPassingService: DataPassingService) {}
 
   ngOnInit(): void {
     this.dataPassingService.getAllData().subscribe(
       (data) => {
-        console.log(data);
         this.responseMapping(data);
       },
       (error) => {
-        console.log(error);
         this.error = true;
       }
     );
-    // console.log(this.dataPassingService.getCountryData('peru'))
   }
 
   regionToggle() {
     this.showRegions = !this.showRegions;
-    console.log(this.showRegions);
   }
 
-  regionSelect(e: any) {
-    console.log(e.srcElement.innerText);
+  regionSelect(value) {
+    this.countryList = this.newList;
+    this.selectedRegion = value;
+    if (value != "All"){
+      this.countryList = this.countryList.filter(selected => selected.country.region === value);
+    } else {
+      return;
+    }
   }
 
   responseMapping(data: any) {
@@ -58,6 +62,7 @@ export class LandingPageComponent implements OnInit {
       this.countryList[i].country.region = data[i].region;
       this.countryList[i].country.capital = data[i].capital;
     }
+    this.newList = this.countryList;
   }
 
   numberWithCommas(x: any) {

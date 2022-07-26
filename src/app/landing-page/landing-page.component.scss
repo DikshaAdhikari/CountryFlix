@@ -54,18 +54,20 @@ main {
     left: 0;
     top:50px;
     width: 100%;
+    z-index: 99;
+    padding: 0;
     transition: visibility 500ms linear 100ms, opacity 500ms, background-color var(--transition), box-shadow var(--transition);
 }
-
-.regions div:not(:last-child){
-    margin-bottom: 0.5rem;
+ul{
+    list-style-type: none;
+    padding: 5px;
 }
 
-.regions div:hover, .region-list:hover{
+li:hover, .region-list:hover{
     cursor: pointer;
 }
 
-.regions div:hover{
+li:hover{
     background-color: var(--color-text-m);
     color: var(--bg-component);
 }
