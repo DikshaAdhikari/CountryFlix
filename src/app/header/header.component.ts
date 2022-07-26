@@ -18,7 +18,6 @@ export class HeaderComponent implements OnInit {
 
   toggleSwitch(){
     this.darkTheme = !this.darkTheme;
-    console.log("DARK", this.darkTheme)
     this.dark.emit(this.darkTheme)
   }
 }

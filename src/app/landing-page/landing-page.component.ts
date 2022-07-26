@@ -12,11 +12,13 @@ import { DataPassingService } from '../common/service/data-passing.service';
 export class LandingPageComponent implements OnInit {
   showRegions: boolean = false;
   selectedRegion: string = '';
+  searchData: string = '';
   dataList: DataList = new DataList();
   staticContent: StaticContent = new StaticContent();
   countryList: CountryModel[] = [];
   newList;
   error: boolean = false;
+  listError: boolean = false;
   constructor(public dataPassingService: DataPassingService) {}
 
   ngOnInit(): void {
@@ -36,11 +38,17 @@ export class LandingPageComponent implements OnInit {
 
   regionSelect(value) {
     this.countryList = this.newList;
+    if (this.selectedRegion != value) {
+      this.searchData = '';
+    }
     this.selectedRegion = value;
-    if (value != "All"){
-      this.countryList = this.countryList.filter(selected => selected.country.region === value);
+    if (value != 'All' && value != '') {
+      this.countryList = this.countryList.filter(
+        (selected) => selected.country.region === value
+      );
+      return this.countryList;
     } else {
-      return;
+      return this.countryList;
     }
   }
 
@@ -67,5 +75,16 @@ export class LandingPageComponent implements OnInit {
 
   numberWithCommas(x: any) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
+  onSearch(input) {
+    this.listError = false;
+    this.countryList = this.regionSelect(this.selectedRegion).filter(
+      (selected) =>
+        selected.country.name.toLowerCase().includes(input.toLowerCase())
+    );
+    if (this.countryList.length === 0) {
+      this.listError = true;
+    }
   }
 }

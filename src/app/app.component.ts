@@ -11,6 +11,5 @@ export class AppComponent {
 
   dark(event: boolean){
     this.darkTheme = event;
-    console.log("darkTheme", this.darkTheme)
   }
 }
