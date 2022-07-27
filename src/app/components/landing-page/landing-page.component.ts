@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { StaticContent, DataList } from '../common/model/static-content.model';
-import { CountryModel } from '../common/model/country-data.model';
-import { DataPassingService } from '../common/service/data-passing.service';
+import { StaticContent, DataList } from '../../common/model/static-content.model';
+import { CountryModel } from '../../common/model/country-data.model';
+import { DataPassingService } from '../../common/service/data-passing.service';
 
 @Component({
   selector: 'app-landing-page',

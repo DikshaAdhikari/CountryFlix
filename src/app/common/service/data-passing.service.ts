@@ -14,6 +14,12 @@ export class DataPassingService {
     let all = this.url + this.endpoint;
     return this.http.get(all);
   }
+
+  getRegionData(region: string){
+    let regionURL = this.url + 'region/' + region;
+    return this.http.get(regionURL)
+  }
+
   getCountryData(country: string){
     let countryURL = this.url + 'name/' + country;
     return this.http.get(countryURL)
