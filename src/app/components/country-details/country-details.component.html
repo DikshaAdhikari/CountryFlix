@@ -1,1 +1,46 @@
-<p>country-details works!</p>
+<main class="container-body">
+  <div class="back" (click)="onBack()">
+    <i class="fas fa-arrow-left"></i>{{ staticContent.backButton }}
+  </div>
+  <div class="container-country">
+    <div class="country-data">
+      <img src="{{ countryModel.country.image }}" alt="country-flag" />
+      <div class="country-data-content">
+        <h1 class="country-name">{{ countryModel.country.name }}</h1>
+        <div class="details">
+          <p class="native-name">
+            Native Name: <span>{{ countryModel.country.nativeName }}</span>
+          </p>
+          <p class="population">
+            Population:
+            <span>{{
+              dataPassingService.numberWithCommas(
+                countryModel.country.population
+              )
+            }}</span>
+          </p>
+          <p class="region">
+            Region: <span>{{ countryModel.country.region }}</span>
+          </p>
+          <p class="sub-region">
+            Sub Region: <span>{{ countryModel.country.subregion }}</span>
+          </p>
+          <p class="capital">
+            Capital: <span>{{ countryModel.country.capital }}</span>
+          </p>
+          <p class="domain">
+            Top Level Domain:
+            <span>{{ countryModel.country.topLevelDomain }}</span>
+          </p>
+          <p class="currencies">
+            Currencies: <span>{{ countryModel.country.currencies }}</span>
+          </p>
+          <p class="lang">
+            Languages: <span>{{ countryModel.country.languages }}</span>
+          </p>
+        </div>
+        <!-- <div class="border-countries">Border Countries: <span>{{output}}</span></div> -->
+      </div>
+    </div>
+  </div>
+</main>

@@ -196,6 +196,11 @@ img {
     max-width: 600px;
 }
 
+a{
+    color: var(--color-text-m);
+    text-decoration: none;
+}
+
 @media screen and (max-width:1024px){
     .country-data{
         gap: 5%;

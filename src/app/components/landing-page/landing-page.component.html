@@ -41,7 +41,7 @@
       class="country"
       *ngFor="let countryModel of countryList; let i = index"
     >
-      <!-- <a routerLink="/country"> -->
+      <a routerLink="/details/{{ countryModel.country.name }}">
         <div class="image">
           <img src="{{ countryModel.country.image }}" alt="country-image" />
         </div>
@@ -51,7 +51,11 @@
           </div>
           <div class="population">
             Population :
-            <span>{{ numberWithCommas(countryModel.country.population) }}</span>
+            <span>{{
+              dataPassingService.numberWithCommas(
+                countryModel.country.population
+              )
+            }}</span>
           </div>
           <div class="region">
             Region : <span>{{ countryModel.country.region }}</span>
@@ -60,7 +64,7 @@
             Capital : <span>{{ countryModel.country.capital }}</span>
           </div>
         </div>
-      <!-- </a> -->
+      </a>
     </div>
   </div>
 </main>

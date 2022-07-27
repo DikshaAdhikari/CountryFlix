@@ -6,8 +6,16 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataPassingService {
   endpoint: string = '';
-  url = "https://restcountries.com/v3.1/";
+  url = "https://restcountries.com/v2/";
   constructor(private http:HttpClient) { }
+
+  isNullorUndefined(value){
+    return (value === null || value === undefined);
+  }
+
+  getValidData(value){
+    return this.isNullorUndefined(value) ? 'N.A': value;
+  }
 
   getAllData(){
     this.endpoint = 'all'
@@ -25,5 +33,8 @@ export class DataPassingService {
     return this.http.get(countryURL)
   }
      
+  numberWithCommas(x: any) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
   
 }

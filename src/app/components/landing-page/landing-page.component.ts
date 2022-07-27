@@ -25,6 +25,7 @@ export class LandingPageComponent implements OnInit {
     this.dataPassingService.getAllData().subscribe(
       (data) => {
         this.responseMapping(data);
+        console.log(data)
       },
       (error) => {
         this.error = true;
@@ -64,17 +65,13 @@ export class LandingPageComponent implements OnInit {
     });
     for (let i = 0; i < data.length; i++) {
       this.countryList.push(new CountryModel());
-      this.countryList[i].country.name = data[i].name.common;
-      this.countryList[i].country.image = data[i].flags.png;
-      this.countryList[i].country.population = data[i].population;
-      this.countryList[i].country.region = data[i].region;
-      this.countryList[i].country.capital = data[i].capital;
+      this.countryList[i].country.name = this.dataPassingService.getValidData(data[i].name);
+      this.countryList[i].country.image = this.dataPassingService.getValidData(data[i].flags.png);
+      this.countryList[i].country.population = this.dataPassingService.getValidData(data[i].population);
+      this.countryList[i].country.region = this.dataPassingService.getValidData(data[i].region);
+      this.countryList[i].country.capital = this.dataPassingService.getValidData(data[i].capital);
     }
     this.newList = this.countryList;
-  }
-
-  numberWithCommas(x: any) {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
   }
 
   onSearch(input) {

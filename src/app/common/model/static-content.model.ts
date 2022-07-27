@@ -3,7 +3,8 @@ export class StaticContent {
     searchBar = "Search for a country...";
     filter = "Filter by Region";
     serviceFailure = "Opps! Something went wrong. Please try again later.";
-    blankList = "No Records Found"
+    blankList = "No Records Found";
+    backButton = "Go Back"
 }
 
 export class DataList {
