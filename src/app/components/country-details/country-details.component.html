@@ -39,7 +39,12 @@
             Languages: <span>{{ countryModel.country.languages }}</span>
           </p>
         </div>
-        <!-- <div class="border-countries">Border Countries: <span>{{output}}</span></div> -->
+        <div class="border-countries">
+          Border Countries:
+          <span>
+            <div *ngFor="let border of countryModel.country.border" (click)="onBorderSelect(border)">{{ border }}</div>
+          </span>
+        </div>
       </div>
     </div>
   </div>

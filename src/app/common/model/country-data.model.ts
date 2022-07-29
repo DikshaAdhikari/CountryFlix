@@ -9,6 +9,7 @@ export class CountryModel {
     subregion: '',
     topLevelDomain: '',
     currencies: '',
-    languages: ''
+    languages: '',
+    border: ''
   };
 }

@@ -13,6 +13,7 @@ export class CountryDetailsComponent implements OnInit {
   staticContent: StaticContent = new StaticContent();
   countryModel: CountryModel = new CountryModel();
   userId;
+  output;
   constructor(private router: Router,
     private route: ActivatedRoute, 
     public dataPassingService: DataPassingService) { }
@@ -48,5 +49,10 @@ export class CountryDetailsComponent implements OnInit {
     this.countryModel.country.topLevelDomain = this.dataPassingService.getValidData(data[0].topLevelDomain);
     this.countryModel.country.currencies = (this.dataPassingService.getValidData(data[0].currencies)) != 'N.A' ? this.dataPassingService.getValidData(data[0].currencies).map(elem=>elem.name) : 'N.A';
     this.countryModel.country.languages = (this.dataPassingService.getValidData(data[0].languages)) != 'N.A' ? this.dataPassingService.getValidData(data[0].languages).map(elem=>elem.name) : 'N.A';
+    this.countryModel.country.border = (this.dataPassingService.getValidData(data[0].borders)) != 'N.A' ? (this.dataPassingService.getValidData(data[0].borders)) : '';
+  }
+
+  onBorderSelect(value){
+
   }
 }

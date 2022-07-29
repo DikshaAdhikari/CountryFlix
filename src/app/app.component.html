@@ -2,3 +2,7 @@
     <app-header (dark)="dark($event)"></app-header>
     <router-outlet></router-outlet>
 </div>
+<ng-http-loader 
+    [opacity]="'0.8'"
+    [spinner]="spinnerStyle.skChasingDots">
+</ng-http-loader>
