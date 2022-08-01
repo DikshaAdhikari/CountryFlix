@@ -3,6 +3,7 @@ import { StaticContent } from '../../common/model/static-content.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CountryModel } from '../../common/model/country-data.model';
 import { DataPassingService } from 'src/app/common/service/data-passing.service';
+import { Spinkit } from 'ng-http-loader';
 
 @Component({
   selector: 'app-country-details',
@@ -10,6 +11,7 @@ import { DataPassingService } from 'src/app/common/service/data-passing.service'
   styleUrls: ['./country-details.component.scss']
 })
 export class CountryDetailsComponent implements OnInit {
+  spinnerStyle = Spinkit;
   staticContent: StaticContent = new StaticContent();
   countryModel: CountryModel = new CountryModel();
   userId;
@@ -20,11 +22,9 @@ export class CountryDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = this.route.snapshot.paramMap.get('id');
-    console.log(this.userId);
     
     this.dataPassingService.getCountryData(this.userId).subscribe(
       (data) => {
-        console.log(data);
         this.responseMapping(data);
       },
       (error) => {
@@ -50,9 +50,5 @@ export class CountryDetailsComponent implements OnInit {
     this.countryModel.country.currencies = (this.dataPassingService.getValidData(data[0].currencies)) != 'N.A' ? this.dataPassingService.getValidData(data[0].currencies).map(elem=>elem.name) : 'N.A';
     this.countryModel.country.languages = (this.dataPassingService.getValidData(data[0].languages)) != 'N.A' ? this.dataPassingService.getValidData(data[0].languages).map(elem=>elem.name) : 'N.A';
     this.countryModel.country.border = (this.dataPassingService.getValidData(data[0].borders)) != 'N.A' ? (this.dataPassingService.getValidData(data[0].borders)) : '';
-  }
-
-  onBorderSelect(value){
-
   }
 }

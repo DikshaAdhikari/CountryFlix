@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { StaticContent, DataList } from '../../common/model/static-content.model';
 import { CountryModel } from '../../common/model/country-data.model';
 import { DataPassingService } from '../../common/service/data-passing.service';
+import { Spinkit } from 'ng-http-loader';
 
 @Component({
   selector: 'app-landing-page',
@@ -10,6 +11,7 @@ import { DataPassingService } from '../../common/service/data-passing.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class LandingPageComponent implements OnInit {
+  spinnerStyle = Spinkit;
   showRegions: boolean = false;
   selectedRegion: string = '';
   searchData: string = '';
@@ -25,7 +27,6 @@ export class LandingPageComponent implements OnInit {
     this.dataPassingService.getAllData().subscribe(
       (data) => {
         this.responseMapping(data);
-        console.log(data)
       },
       (error) => {
         this.error = true;
